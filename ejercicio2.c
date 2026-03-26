@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 double* generarVector(int n, unsigned int semilla) {
     double* vector = malloc(n * sizeof(double));
@@ -115,6 +116,8 @@ void imprimirVector(const double *vector, int n, int por_linea) {
     int counter = 0;
     const double *ptr = vector;
 
+    printf("\n");
+
     for (i = 0; i < n; i ++, ptr++) {
         printf("%8.4f", *ptr);
         counter++;
@@ -124,10 +127,12 @@ void imprimirVector(const double *vector, int n, int por_linea) {
             counter = 0;
         }
     }
+    printf("\n");
 }
 
 void reporteEstadisticas(const double *vector, int n, const char *titulo) {
-    printf("Las estadísticas del vector: %p", titulo);
+    printf("\n");
+    printf("Las estadísticas del vector: %s", titulo);
     printf("\n");
     printf("El valor mínimo hallado en el vector es %f", calcularMin(vector, n));
     printf("\n");
@@ -142,6 +147,7 @@ void reporteEstadisticas(const double *vector, int n, const char *titulo) {
     printf("La varianza de todos los elementos del vector es: %f", varianza);
     printf("\n");
     printf("La desviación estándar de los elementos del vector es: %f", calcularDesviacion(varianza));
+    printf("\n");
 }
 
 double productoInterno(const double *vector_1, const double *vector_2, int n) {
@@ -161,8 +167,48 @@ double productoInterno(const double *vector_1, const double *vector_2, int n) {
     return producto_punto;
 }
 
-
-
 int main() {
+    double* vector_1 = generarVector(10, 341234123);
+    imprimirVector(vector_1, 10, 5);
 
+    reporteEstadisticas(vector_1, 10, "Vector #1");
+
+    double min = calcularMin(vector_1, 10);
+    double max = calcularMax(vector_1, 10);
+    normalizarMinMax(vector_1, 10, min, max);
+    imprimirVector(vector_1, 10, 5);
+
+    double* vector_2 = generarVector(1000, 65754854);
+    reporteEstadisticas(vector_2, 1000, "Vector #2");
+
+    int tamanos[2] = {100000, 10000000};
+    int i = 0;
+
+    printf("\n");
+
+    for (i = 0; i < 2; i++) {
+        int cantidad;
+        cantidad = tamanos[i];
+
+        double* vector_i = generarVector(cantidad, 7654847478456);
+        clock_t tiempo_de_inicio_1 = clock();
+        calcularSuma(vector_i, cantidad);
+        clock_t tiempo_de_salida_1 = clock();
+        double tiempo_transcurrido_1 = (double)(tiempo_de_salida_1 - tiempo_de_inicio_1) / CLOCKS_PER_SEC;
+
+        double min = calcularMin(vector_i, cantidad);
+        double max = calcularMax(vector_i, cantidad);
+        clock_t tiempo_de_inicio_2 = clock();
+        normalizarMinMax(vector_i, cantidad, min, max);
+        clock_t tiempo_de_salida_2 = clock();
+        double tiempo_transcurrido_2 = (double)(tiempo_de_salida_2 - tiempo_de_inicio_2) / CLOCKS_PER_SEC;
+
+        printf("Cantidad de tiempo para calcular la suma de el vector de %d: %.6fs\n", cantidad, tiempo_transcurrido_1);
+        printf("Cantidad de tiempo para calcular la nromalizacion de el vector de %d: %.6fs\n", cantidad, tiempo_transcurrido_2);
+
+        free(vector_i);
+    }
+
+    free(vector_1);
+    free(vector_2);
 }
