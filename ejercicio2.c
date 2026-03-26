@@ -17,6 +17,55 @@ double* generarVector(int n, unsigned int semilla) {
     return vector;
 }
 
+double calcularMin(const double *vector, int n) {
+    int i = 0;
+    double min = *(vector + i);
+
+    for (i = 0; i < n; i++) {
+        if (*(vector + i) < min) {
+            min = *(vector + i);
+        }
+    }
+
+    return min;
+}
+
+double calcularMax(const double *vector, int n) {
+    int i = 0;
+    double max = *(vector + i);
+
+    for (i = 0; i < n; i++) {
+        if (*(vector + i) > max) {
+            max = *(vector + i);
+        }
+    }
+
+    return max;
+}
+
+double calcularSuma(const double *vector, int n) {
+    int i = 0;
+    double sum = 0;
+
+    for (i = 0; i < n; i++) {
+        sum += *(vector + i);
+    }
+
+    return sum;
+}
+
+double calcularMedia(const double *vector, int n) {
+    int i = 0;
+    double suma = 0;
+    double media;
+
+    for (i = 0; i < n; i++) {
+        suma += *(vector + i);
+    }
+
+    media = suma / n;
+    return media;
+}
 
 
 int main() {
