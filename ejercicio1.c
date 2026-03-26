@@ -65,10 +65,10 @@ void multiplicarMatrices(double **A, double **B, double **C, int n) {
     int k = 0;
 
     for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
+        for (k = 0; k < n; k++) {
             double acumulador = 0;
 
-            for (k = 0; k < n; k++) {
+             for (j = 0; j < n; j++) {
                 acumulador += *(*(A + i) + k) * *(*(B + k) + j);
             }
             *(*(C + i) + j) = acumulador;

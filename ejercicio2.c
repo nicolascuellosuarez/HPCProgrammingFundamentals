@@ -45,7 +45,7 @@ double calcularMax(const double *vector, int n) {
 
 double calcularSuma(const double *vector, int n) {
     int i = 0;
-    double sum = 0;
+    double sum = 0.0;
 
     for (i = 0; i < n; i++) {
         sum += *(vector + i);
@@ -56,7 +56,7 @@ double calcularSuma(const double *vector, int n) {
 
 double calcularMedia(const double *vector, int n) {
     int i = 0;
-    double suma = 0;
+    double suma = 0.0;
     double media;
 
     for (i = 0; i < n; i++) {
@@ -67,6 +67,13 @@ double calcularMedia(const double *vector, int n) {
     return media;
 }
 
+double calcularVarianza(const double *vector, int n, double media) {
+    int i = 0;
+    double suma = 0.0;
+
+
+
+}
 
 int main() {
 
