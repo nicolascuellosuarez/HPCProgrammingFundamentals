@@ -19,12 +19,12 @@ double* generarVector(int n, unsigned int semilla) {
 }
 
 double calcularMin(const double *vector, int n) {
-    int i = 0;
-    double min = *(vector + i);
-
     if (n <= 0 || vector == NULL) {
         return 0;
     }
+
+    int i = 0;
+    double min = *(vector + i);
 
     for (i = 1; i < n; i++) {
         if (*(vector + i) < min) {
@@ -36,12 +36,12 @@ double calcularMin(const double *vector, int n) {
 }
 
 double calcularMax(const double *vector, int n) {
-    int i = 0;
-    double max = *(vector + i);
-
     if (n <= 0 || vector == NULL) {
         return 0;
     }
+
+    int i = 0;
+    double max = *(vector + i);
 
     for (i = 1; i < n; i++) {
         if (*(vector + i) > max) {
@@ -113,7 +113,7 @@ void normalizarMinMax(double *vector, int n, double min, double max) {
 void imprimirVector(const double *vector, int n, int por_linea) {
     int i = 0;
     int counter = 0;
-    double *ptr = vector;
+    const double *ptr = vector;
 
     for (i = 0; i < n; i ++, ptr++) {
         printf("%8.4f", *ptr);
@@ -127,9 +127,41 @@ void imprimirVector(const double *vector, int n, int por_linea) {
 }
 
 void reporteEstadisticas(const double *vector, int n, const char *titulo) {
-    printf("El mínimo es %d", calcularMin(vector, n));
-
+    printf("Las estadísticas del vector: %p", titulo);
+    printf("\n");
+    printf("El valor mínimo hallado en el vector es %f", calcularMin(vector, n));
+    printf("\n");
+    printf("El valor máximo hallado en el vector es %f", calcularMax(vector, n));
+    printf("\n");
+    printf("La suma de todos los elementos del vector es: %f", calcularSuma(vector, n));
+    printf("\n");
+    double media = calcularMedia(vector, n);
+    printf("El promedio de todos los elementos del vector es: %f", media);
+    printf("\n");
+    double varianza = calcularVarianza(vector, n, media);
+    printf("La varianza de todos los elementos del vector es: %f", varianza);
+    printf("\n");
+    printf("La desviación estándar de los elementos del vector es: %f", calcularDesviacion(varianza));
 }
+
+double productoInterno(const double *vector_1, const double *vector_2, int n) {
+    if (vector_1 == NULL || vector_2 == NULL) {
+        return 0.0;
+    }
+
+    int i = 0;
+    double producto_punto = 0.0;
+    const double *ptr1 = vector_1;
+    const double *ptr2 = vector_2;
+
+    for (i = 0; i < n; i++, ptr1++, ptr2++) {
+        producto_punto += *ptr1 * *ptr2;
+    }
+
+    return producto_punto;
+}
+
+
 
 int main() {
 
