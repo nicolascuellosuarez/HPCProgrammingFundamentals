@@ -41,7 +41,7 @@ int* copiarVector(const int *src, int n) {
     return vector_de_copia;
 }
 
-void merge(int *arr, int *izq, int n_izq, int *der, int n_der) {
+void merge(int *arr, const int *izq, int n_izq, const int *der, int n_der) {
     if (arr == NULL) {
         printf("EL arreglo original está vacío.");
     }
@@ -79,6 +79,11 @@ void merge(int *arr, int *izq, int n_izq, int *der, int n_der) {
 }
 
 void mergeSort(int *arr, int n) {
+    if (arr == NULL) {
+        printf("El arreglo no está alojado en memoria");
+        return;
+    }
+
     if (n <= 1) {
         return;
     }
@@ -113,13 +118,18 @@ int* buscarBinario(const int *arr, int n, int objetivo) {
 }
 
 int verificarOrdenado(const int *arr, int n) {
+    if (arr == NULL) {
+        printf("El arreglo no está alojado en memoria");
+        return 2;
+    }
     int i = 0;
-    int *ptr = arr;
+    const int *ptr = arr;
 
     while (i < n - 1) {
         if (*(ptr) > *(ptr + 1)) {
             return 0;
         }
+        ptr++;
         i++;
     }
 
@@ -127,10 +137,9 @@ int verificarOrdenado(const int *arr, int n) {
 }
 
 int main() {
-    int tamaños[4] = {1000, 10000, 100000, 1000000};
-    unsigned int semilla = 2;
-
     for (int t = 0; t < 4; t++) {
+        unsigned int semilla = 2;
+        int tamaños[4] = {1000, 10000, 100000, 1000000};
         int n = tamaños[t];
         printf("Tamaño del vector: %d", n);
 

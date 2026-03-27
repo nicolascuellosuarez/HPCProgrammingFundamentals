@@ -180,7 +180,7 @@ double productoInterno(const double *vector_1, const double *vector_2, int n) {
 int main() {
     double* vector_1 = generarVector(10, 341234123);
     imprimirVector(vector_1, 10, 5);
-    double* vector_1_para_producto_punto = generarVector(10, 341234123);
+    double* vector_1_para_producto_punto = generarVector(10, 34152123);
     imprimirVector(vector_1_para_producto_punto, 10, 5);
 
     reporteEstadisticas(vector_1, 10, "Vector #1");
