@@ -38,6 +38,11 @@ void liberarMatriz(double **m, int filas) {
 }
 
 void inicializar(double **m, int filas, int cols, double valor_base) {
+    if (m == NULL) {
+        printf("La matriz es nula.");
+        return;
+    }
+
     int i = 0;
     int j = 0;
 
@@ -49,6 +54,11 @@ void inicializar(double **m, int filas, int cols, double valor_base) {
 }
 
 void sumarMatrices(double **A, double **B, double **C, int filas, int cols) {
+    if (A == NULL || B == NULL || C == NULL) {
+        printf("La matriz es nula.");
+        return;
+    }
+
     int i = 0;
     int j = 0;
 
@@ -60,15 +70,20 @@ void sumarMatrices(double **A, double **B, double **C, int filas, int cols) {
 }
 
 void multiplicarMatrices(double **A, double **B, double **C, int n) {
+    if (A == NULL || B == NULL || C == NULL) {
+        printf("La matriz es nula.");
+        return;
+    }
+
     int i = 0;
     int j = 0;
     int k = 0;
 
     for (i = 0; i < n; i++) {
-        for (k = 0; k < n; k++) {
+        for (j = 0; j < n; j++) {
             double acumulador = 0;
 
-             for (j = 0; j < n; j++) {
+             for (k = 0; k < n; k++) {
                 acumulador += *(*(A + i) + k) * *(*(B + k) + j);
             }
             *(*(C + i) + j) = acumulador;
@@ -77,6 +92,11 @@ void multiplicarMatrices(double **A, double **B, double **C, int n) {
 }
 
 void imprimirMatriz(double **m, int filas, int cols, const char *nombre) {
+    if (m == NULL) {
+        printf("La matriz es nula.");
+        return;
+    }
+
     int i = 0;
     int j = 0;
 
