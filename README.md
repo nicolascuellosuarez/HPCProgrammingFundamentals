@@ -21,9 +21,9 @@ sudo apt install git
 Tener instalado:
 
 * MSYS2 o WSL
-* gcc (MinGW64 si usas MSYS2)
+* gcc o MinGW64
 
-Compilar desde la terminal **MinGW64**, no desde MSYS.
+Compilar desde la terminal de **MinGW64**.
 
 ---
 
