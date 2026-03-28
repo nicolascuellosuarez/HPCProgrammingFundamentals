@@ -3,6 +3,15 @@
 #include <math.h>
 #include <time.h>
 
+#ifdef _WIN32
+
+static unsigned int rand_r(unsigned int *seed){
+    *seed = (*seed * 1103515245u + 12345u);
+    return (*seed >> 16) & 0x7FFF;
+}
+
+#endif
+
 double* generarVector(int n, unsigned int semilla) {
     double* vector = malloc(n * sizeof(double));
     int i = 0;

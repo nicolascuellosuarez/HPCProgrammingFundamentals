@@ -3,6 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _WIN32
+
+static unsigned int rand_r(unsigned int *seed){
+    *seed = (*seed * 1103515245u + 12345u);
+    return (*seed >> 16) & 0x7FFF;
+}
+
+#endif
+
 int* generarVectorInt(int n, int vmin, int vmax, unsigned int semilla) {
     int* vector = malloc(n * sizeof(int));
     int i = 0;
