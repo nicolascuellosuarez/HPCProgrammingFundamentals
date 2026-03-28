@@ -126,7 +126,7 @@ int verificarOrdenado(const int *arr, int n) {
     const int *ptr = arr;
 
     while (i < n - 1) {
-        if (*(ptr) > *(ptr + 1)) {
+        if (*ptr > *(ptr + 1)) {
             return 0;
         }
         ptr++;
@@ -145,8 +145,6 @@ int main() {
 
         int* vector = generarVectorInt(n, 0, 100, semilla);
         int* copia = copiarVector(vector, n);
-
-
 
         clock_t inicio = clock();
         mergeSort(copia, n);

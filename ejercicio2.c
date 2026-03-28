@@ -221,9 +221,36 @@ int main() {
 
         printf("\n");
         printf("Cantidad de tiempo para calcular la suma de el vector de %d: %.6fs\n", cantidad, tiempo_transcurrido_1);
-        printf("Cantidad de tiempo para calcular la nromalizacion de el vector de %d: %.6fs\n", cantidad, tiempo_transcurrido_2);
+        printf("Cantidad de tiempo para calcular la normalizacion de el vector de %d: %.6fs\n", cantidad, tiempo_transcurrido_2);
 
         free(vector_i);
+    }
+
+    // Próxima implementación para BenchMarking:
+
+    FILE *benchmarking = fopen("tiempos.dat", "w");
+    fprintf(benchmarking, "#n Suma Normalización\n");
+
+    int t = 0;
+    for (t = 0; t < 4; t++) {
+        int benchmarking_tamanos[4] = {10, 1000, 100000, 10000000};
+        int cantidad_benchmarking = benchmarking_tamanos[t];
+
+        double* vector_prueba = generarVector(cantidad_benchmarking, 12345);
+        clock_t tiempo_de_inicio_para_suma = clock();
+        calcularSuma(vector_prueba, cantidad_benchmarking);
+        clock_t tiempo_de_final_para_suma = clock();
+        double tiempo_ms_para_suma = (double)(tiempo_de_final_para_suma - tiempo_de_inicio_para_suma) * 1000.0 / CLOCKS_PER_SEC;
+
+        double min_val_para_normalizar = calcularMin(vector_prueba, cantidad_benchmarking);
+        double max_val_para_normalizar = calcularMax(vector_prueba, cantidad_benchmarking);
+        clock_t tiempo_de_inicio_para_normalizacion = clock();
+        normalizarMinMax(vector_prueba, cantidad_benchmarking, min_val_para_normalizar, max_val_para_normalizar);
+        clock_t tiempo_de_final_para_normalizacion = clock();
+        double tiempo_ms_para_normalizacion = (double)(tiempo_de_final_para_normalizacion - tiempo_de_inicio_para_normalizacion) * 1000.0 / CLOCKS_PER_SEC;
+
+        fprintf(benchmarking, "%d %f %f\n", cantidad_benchmarking, tiempo_ms_para_suma, tiempo_ms_para_normalizacion);
+        free(vector_prueba);
     }
 
     free(vector_1);
