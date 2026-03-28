@@ -9,7 +9,7 @@ Tener instalado:
 * gcc
 * git
 
-Instalar en Ubuntu:
+Instalar en la distro:
 
 sudo apt update
 sudo apt install git
