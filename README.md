@@ -30,6 +30,7 @@ Compilar desde la terminal **MinGW64**, no desde MSYS.
 ## Clonar el repositorio:
 
 git clone https://github.com/nicolascuellosuarez/HPCProgrammingFundamentals
+
 cd TP1_HPC
 
 ---
@@ -39,13 +40,17 @@ cd TP1_HPC
 ### Linux / WSL:
 
 gcc -Wall -O2 ejercicio1.c -o ejercicio1 -lm
+
 gcc -Wall -O2 ejercicio2.c -o ejercicio2 -lm
+
 gcc -Wall -O2 ejercicio3.c -o ejercicio3 -lm
 
 Ejecutar:
 
 ./ejercicio1
+
 ./ejercicio2
+
 ./ejercicio3
 
 ---
@@ -53,13 +58,17 @@ Ejecutar:
 ### Windows:
 
 gcc -Wall -O2 ejercicio1.c -o ejercicio1.exe -lm
+
 gcc -Wall -O2 ejercicio2.c -o ejercicio2.exe -lm
+
 gcc -Wall -O2 ejercicio3.c -o ejercicio3.exe -lm
 
 Ejecutar:
 
 ejercicio1.exe
+
 ejercicio2.exe
+
 ejercicio3.exe
 
 ---
