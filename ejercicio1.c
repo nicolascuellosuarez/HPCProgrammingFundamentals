@@ -114,8 +114,12 @@ void imprimirMatriz(double **m, int filas, int cols, const char *nombre) {
 
 int main() {
     int n;
+
     printf("Ingresa la dimensión n que quieres que tengan las matrices cuadradas: ");
-    scanf("%d", &n);
+    if (scanf("%d", &n) != 1) {
+        printf("Entrada inválida\n");
+        return 1;
+    }
 
     double** A = crearMatriz(n, n);
     double** B = crearMatriz(n, n);
