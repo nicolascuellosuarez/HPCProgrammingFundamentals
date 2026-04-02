@@ -83,7 +83,7 @@ void multiplicarMatrices(int** A, int** B, int** C, int n) {
     int j = 0;
     int k = 0;
 
-    #pragma omp parallel for private(i, j,k)
+    #pragma omp parallel for private(j, k)
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
             int acumulador = 0;
