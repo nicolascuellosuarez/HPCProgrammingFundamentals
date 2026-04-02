@@ -84,6 +84,16 @@ Esto funciona con cualquier compilador de Windows.
 
 ---
 
+## Nota sobre el repositorio
+
+En el repositorio se encuentran los 3 ejercicios correspondientes
+al trabajo práctico, además de una serie de ejercicios ejecutados y
+sacados específicamente de las notas de clase del GitHub, completando
+así la serie de ejercicios establecidos.
+
+---
+
+
 ## Autor
 
 Nicolás Cuello
