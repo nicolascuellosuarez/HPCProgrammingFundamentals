@@ -23,8 +23,7 @@ int main() {
                     v[t] = v[t-1] + aceleracion * dt;
                     x[t] = x[t-1] + v[t-1] * dt + 0.5 * aceleracion * dt * dt;
 
-                    printf("Hilo %d calculó t=%d: Pos=%.2f, Vel=%.2f\n",
-                           omp_get_thread_num(), t, x[t], v[t]);
+                    printf("Hilo %d calculó t=%d: Pos=%.2f, Vel=%.2f\n", omp_get_thread_num(), t, x[t], v[t]);
                 }
             }
         }
