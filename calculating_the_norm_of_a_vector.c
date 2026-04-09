@@ -13,7 +13,7 @@ int* crearVector(int n, unsigned int semilla) {
 
     int i = 0;
     for (i = 0; i < n; i++) {
-        *(vector + i) = rand_r(&semilla) % 1;
+        *(vector + i) = rand_r(&semilla) % 11;
     }
 
     return vector;
